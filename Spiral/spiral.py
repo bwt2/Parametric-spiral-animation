@@ -16,7 +16,4 @@ while True:
     t = a/(t+1)
     theta = m.atan((0.1*(2*t*m.sin(t)+t**2*m.cos(t)))/(0.1*(2*t*m.cos(t)-t**2*m.sin(t))))*(180/m.pi)
 
-    if (90 - theta) < 5:
-        theta = -1*theta
-
     print(f' theta:{theta:>6.2f}, a:{a}, t:{t:.2f},')
