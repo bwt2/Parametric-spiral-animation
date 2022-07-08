@@ -2,6 +2,9 @@ from re import T
 import turtle
 import math as m
 
+'''
+TODO: Fix arrow on spiral
+'''
 screen = turtle.getscreen()
 pen = turtle.Turtle()
 text = turtle.Turtle()
