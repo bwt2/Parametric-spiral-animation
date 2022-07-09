@@ -1,11 +1,6 @@
-from re import T
 import turtle
 import tkinter
 import math
-
-'''
-TODO: Fix arrow on spiral
-'''
 
 t = 0
 k = 0
@@ -13,16 +8,16 @@ theta = 0
 n = 1
 a = 5
 
-print('''* * * * * * * * * * * * * * *
-    Spiral modeled by:
+print('''Spiral modeled by (t in R):
+=============================
     x = a t^n cos(t)
     y = a t^n sin(t)
     x^2 + y^2 = (at^n)^2
-    t in R
-* * * * * * * * * * * * * * *''')
+=============================''')
 while True:
     try:
-        n = input('n: ').strip()
+        print('n: ', end='')
+        n = input().strip()
         if n == '':
             n = 1
             print(f"Default value chosen (n = {n})")
@@ -31,7 +26,8 @@ while True:
 
         while True:
             try:
-                a = input('a: ').strip()
+                print('a: ', end='')
+                a = input().strip()
                 if a == '':
                     a = 5
                     print(f"Default value chosen (a = {a})")
@@ -48,25 +44,28 @@ while True:
         print("Invalid Input for n; Enter an integer")
         continue
 
-screen = turtle.getscreen()
-screen.clear()
-pen = turtle.Turtle()
-text = turtle.Turtle()
+print("\nInitializing Animation ...")
 
-screen.bgcolor('grey')
+
+ws = turtle.Screen()
+ws.clear()
+ws.bgcolor('grey')
 turtle.title('Parametric Spiral')
-img = tkinter.Image("photo", file="bwspiral.png")
+img = tkinter.Image("photo", file="Assets\\bwspiral.png")
 turtle._Screen._root.iconphoto(True, img)
 
+pen = turtle.Turtle()
 pen.shape('classic')
 pen.color('white')
 pen.shapesize(0.75,0.75,0.75)
 
+text = turtle.Turtle()
 text.color('white')
 text.penup()
 text.hideturtle()
 text.setx(-460)
 text.sety(-460)
+
 
 while True:
     text.undo()
@@ -86,7 +85,8 @@ while True:
     t = k/(t+1)
     theta = math.atan((t+n*math.tan(t))/(n-t*math.tan(t)))*(180/math.pi)
 
-    '''
-    DEBUG PRINTS
-    print(f'theta:{theta:>6.2f}, k:{k}, t:{t:.2f}')
-    '''
+
+'''
+DEBUG PRINTS
+print(f'theta:{theta:>6.2f}, k:{k}, t:{t:.2f}')
+'''
