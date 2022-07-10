@@ -1,8 +1,18 @@
+import sys
 import turtle
 import tkinter
 import math
+import os
 
-t = 0
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+    
+t = 1
 k = 0
 theta = 0
 n = 1
@@ -44,14 +54,13 @@ while True:
         print("Invalid Input for n; Enter an integer")
         continue
 
-print("\nInitializing Animation ...")
-
+print("\nInitializing Animation ...", end ='')
 
 ws = turtle.Screen()
 ws.clear()
 ws.bgcolor('grey')
 turtle.title('Parametric Spiral')
-img = tkinter.Image("photo", file="Assets\\bwspiral.png")
+img = tkinter.Image("photo", file=resource_path("bwspiral.png"))
 turtle._Screen._root.iconphoto(True, img)
 
 pen = turtle.Turtle()
@@ -66,6 +75,9 @@ text.hideturtle()
 text.setx(-460)
 text.sety(-460)
 
+pen.penup()
+pen.goto((a)*(t**n)*math.cos(t),(a)*(t**n)*math.sin(t))
+pen.pendown()
 
 while True:
     text.undo()
@@ -86,7 +98,3 @@ while True:
     theta = math.atan((t+n*math.tan(t))/(n-t*math.tan(t)))*(180/math.pi)
 
 
-'''
-DEBUG PRINTS
-print(f'theta:{theta:>6.2f}, k:{k}, t:{t:.2f}')
-'''
